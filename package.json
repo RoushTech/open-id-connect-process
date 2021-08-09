@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "base64url": "^3.0.1"
+  },
+  "name": "mmg-stuff",
+  "version": "1.0.0",
+  "main": "test.js",
+  "devDependencies": {},
+  "scripts": {
+    "default": "node ./test.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
