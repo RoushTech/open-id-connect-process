@@ -10,7 +10,11 @@ const codeChallenge = base64url(
 );
 
 console.log(
-  `\nOpen https://sandboxapp.gaidge.com/api/v1/connect/authorize?client_id=${clientId}&response_type=code&code_challenge=${codeChallenge}&code_challenge_method=S256\n`
+  `\nOpen https://sandboxapp.gaidge.com/api/v1/connect/authorize?client_id=${encodeURIComponent(
+    clientId
+  )}&response_type=code&code_challenge=${encodeURIComponent(
+    codeChallenge
+  )}&code_challenge_method=S256\n`
 );
 
 const readlineInterface = readLine.createInterface({
@@ -20,7 +24,13 @@ const readlineInterface = readLine.createInterface({
 
 readlineInterface.question("Provide the returned code: ", (code) => {
   console.log(
-    `\ncurl -d "code=${code}&grant_type=authorization_code&client_id=${clientId}&code_verifier=${codeVerifier}&client_secret=${clientSecret}" -X POST https://sandboxapp.gaidge.com/api/v1/connect/token\n`
+    `\ncurl -d "code=${code}&grant_type=authorization_code&client_id=${encodeURIComponent(
+      clientId
+    )}&code_verifier=${encodeURIComponent(
+      codeVerifier
+    )}&client_secret=${encodeURIComponent(
+      clientSecret
+    )}" -X POST https://sandboxapp.gaidge.com/api/v1/connect/token\n`
   );
   readlineInterface.close();
 });
